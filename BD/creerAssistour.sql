@@ -92,6 +92,33 @@ CREATE TABLE `TypeContrat` (
   `nomTypeContrat` char(30)
 );
 
+CREATE TABLE `TypeOperation` (
+  `codeTO` varchar(10) PRIMARY KEY NOT NULL,
+  `libelleTO` varchar(500),
+  `numDossier` int NOT NULL
+);
+
+CREATE TABLE `Couleur` (
+  `codeCouleur` int PRIMARY KEY NOT NULL,
+  `couleur` char(20),
+  `signification` char(30)
+);
+
+CREATE TABLE `Evaluer` (
+  `numDossier` int NOT NULL,
+  `idHotel` int NOT NULL,
+  `codeCouleur` int,
+  PRIMARY KEY (`numDossier`, `idHotel`)
+);
+
+ALTER TABLE `Evaluer` ADD FOREIGN KEY (`numDossier`) REFERENCES `DossierSinistre` (`numDossier`);
+
+ALTER TABLE `Evaluer` ADD FOREIGN KEY (`idHotel`) REFERENCES `Hotel` (`idHotel`);
+
+ALTER TABLE `Evaluer` ADD FOREIGN KEY (`codeCouleur`) REFERENCES `Couleur` (`codeCouleur`);
+
+ALTER TABLE `TypeOperation` ADD FOREIGN KEY (`numDossier`) REFERENCES `DossierSinistre` (`numDossier`);
+
 ALTER TABLE `DossierSinistre` ADD FOREIGN KEY (`idTA`) REFERENCES `TechnicienAssistance` (`idTA`);
 
 ALTER TABLE `DossierSinistre` ADD FOREIGN KEY (`idHotel`) REFERENCES `Hotel` (`idHotel`);
@@ -113,3 +140,6 @@ ALTER TABLE `Etapes` ADD FOREIGN KEY (`numDossier`) REFERENCES `DossierSinistre`
 ALTER TABLE `Contrat` ADD FOREIGN KEY (`numAdherent`) REFERENCES `Adherent` (`numAdherent`);
 
 ALTER TABLE `Contrat` ADD FOREIGN KEY (`idTypeContrat`) REFERENCES `TypeContrat` (`idTypeContrat`);
+
+ALTER TABLE `TypeOperation` ADD FOREIGN KEY (`numDossier`) REFERENCES `DossierSinistre`(`numDossier`);
+

@@ -56,6 +56,22 @@ insert into Etapes(numOrdre, cout, villeDepart, villeArrivee, idTransport, idTra
 (2, 24, "Guéret", "Limoges", 2, 2, 2),
 (3, 68, "Limoges", "Paris-Austerlitz", 3, 2, 2);
 
+insert into Couleur VALUES
+(1, "Vert", "Très bien"),
+(2, "Bleu", "Bien"),
+(3, "Jaune", "Correct"),
+(4, "Rouge", "Décevant");
+
+insert into TypeOperation VALUES
+("D020", "Réparation crémaillère de direction", 1),
+("D022", "Remplacement colonne de direction", 1);
+
+insert into Evaluer VALUES
+(1, 1, 2),
+(1, 2, 1);
+
+
+
 
 
 
